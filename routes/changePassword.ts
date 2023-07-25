@@ -18,9 +18,9 @@ module.exports = function changePassword () {
     const newPasswordInString = newPassword?.toString()
     const repeatPassword = query.repeat
     if (!newPassword || newPassword === 'undefined') {
-      res.status(401).send(res.__('Password cannot be empty.'))
+      res.status(401).send(res.__('Password cannot be an empty string.'))
     } else if (newPassword !== repeatPassword) {
-      res.status(401).send(res.__('New and repeated password do not match.'))
+      res.status(401).send(res.__('New and repeated passwords do not match.'))
     } else {
       const token = headers.authorization ? headers.authorization.substr('Bearer='.length) : null
       const loggedInUser = security.authenticatedUsers.get(token)
